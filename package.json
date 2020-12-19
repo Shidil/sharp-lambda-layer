@@ -1,0 +1,19 @@
+{
+  "name": "sharp-lambda-layer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:install": "SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install --arch=x64 --platform=linux",
+    "build:setup": "npm run clean && npm run build:install && mkdir -p build/nodejs && mv node_modules build/nodejs/node_modules",
+    "build:pack": "cd build && zip -r layer.zip .",
+    "build": "npm run build:setup && npm run build:pack",
+    "clean": "rm -rf node_modules && rm -rf build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sharp": "^0.26.3"
+  }
+}
